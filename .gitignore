@@ -1,0 +1,20 @@
+/vendor
+/.idea
+Homestead.json
+Homestead.yaml
+# plik konfiguracji środowiska
+.env
+.phpunit.result.cache
+web.config
+
+# zasoby
+/public/brand
+/public/css
+/public/font
+/public/js
+/public/svg
+/public/weather-icons-master
+/public/if-weather-3-2682848_90785.ico
+/public/.htaccess
+# wykluczam ponieważ są tam dane profilu azure
+/.github
