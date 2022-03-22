@@ -2,33 +2,20 @@
 
 # Spis treści
 
-[**1.**** Wprowadzenie**](##**Wprowadzenie**)
+1. Wprowadzenie
+2. Wdrożenie i konfiguracja aplikacji
+    1. Konfiguracja aplikacji
+    2. Wdrożenie aplikacji
+3. Podzespoły
+    1. Specyfikacja podzespołów
+    2. Schemat połączenia podzespołów
+4. Komunikacja z aplikacją internetową   
+5. Baza danych  
+6. Dostęp do pomiarów
+    1. Adresy i ograniczenia
+    2. Pobieranie danych
+    3. Wysyłanie danych do aplikacji internetowej
 
-[**2.**** Wdrożenie i konfiguracja aplikacji**](#**Wdrożenie i konfiguracja aplikacji**)
-
-[**2.1.**** Konfiguracja aplikacji**](##**Konfiguracja aplikacji**)
-
-[**2.2.**** Wdrożenie aplikacji**](##**Wdrożenie aplikacji**)
-
-[**3.**** Podzespoły**](#**Podzespoły**)
-
-[**3.1.**** Specyfikacja podzespołów**](##**Specyfikacja podzespołów**)
-
-[**3.2.**** Schemat połączenia podzespołów**](##**Schemat połączenia podzespołów**)
-
-[**4.**** Komunikacja z aplikacją internetową**](##**Komunikacja z aplikacją**)
-
-[**5.**** Baza danych**](#**Baza danych**)
-
-[**6.**** Dostęp do pomiarów**](#**Dostęp do pomiarów**)
-
-[**6.1.**** Adresy i ograniczenia**](##**Adresy i ograniczenia**)
-
-[**6.2.**** Pobieranie danych**](##**Pobieranie danych**)
-
-[**6.3.**** Wysyłanie danych do aplikacji internetowej**](##**Wysyłanie danych do aplikacji internetowej**)
-
-1.
 # **Wprowadzenie**
 
 Celem projektu jest zbudowanie stacji pogodowej z możliwością prezentowania pomiarów na stronie www.
@@ -55,15 +42,12 @@ Zebrane dane z czujników przesyłane są przez interfejs API przygotowanego do 
 
 Pomiary dostępne są pod adresem: [https://iotdane.azurewebsites.net/](https://iotdane.azurewebsites.net/)
 
-2.
 # **Wdrożenie i konfiguracja aplikacji**
 
-2.1.
 ## **Konfiguracja aplikacji**
 
 Aplikacja napisana jest w języku PHP w wersji 7.4. W komunikacji wykorzystywany jest protokół http w wersji 2 (HTTP/2). Połączenie jest na stałe przekierowane na połączenie szyfrowane HTTPS, a minimalna wersja TLS wymagana przez aplikację to 1.2. Koligacja ARR została wyłączona ze względu na charakter bezstanowy aplikacji.
 
-2.2.
 ## **Wdrożenie aplikacji**
 
 Wdrażanie aplikacji wykonywane jest automatycznie dzięki integracji z serwisem GitHub, tj. przy wprowadzaniu zmian do gałęzi master. Poniżej przedstawiony został schemat procesu wdrożenia zmian w aplikacji oraz kroki procesu w serwisie GitHub.
@@ -80,55 +64,36 @@ _Rysunek 2. Proces tworzenia i wdrożenie na platformę Azure._
 
 _Źródło 2. Opracowanie własne._
 
-3.
 # **Podzespoły**
 
-3.1.
 ## **Specyfikacja podzespołów**
 
     1. Płytka Arduino Nano RP2040 Connect:
 
 _Tabela 1. Specyfikacja płytki Arduino Nano RP2040 Connect._
 
-| **Mikrokontroler** | Raspberry Pi RP2040 |
-| --- | --- |
-| **Piny** | **Pin wbudowanej diody** | 13 |
-|
-| --- | --- | --- | --- |
-| **Cyfrowe piny** | 20 |
-|
-| **Analogowe piny** | 8 |
-|
-| **Piny PWM** | 20 (z wyjątkiem A6 oraz A7) |
-|
-| **Łączność** | **Wi-Fi** | Moduł Nina W102 uBlox |
-|
-| **Bluetooth** | Moduł Nina W102 uBlox |
-|
-| **Moduł zabezpieczeń** | ATECC608A-MAHDA-T Crypto IC |
-|
-| **Sensory** | **IMU** | LSM6DSOXTR (6 osi) |
-|
-| **Mikrofon** | MP34DT05 |
-|
-| **Komunikacja** | **UART** | Tak |
-|
-| **I2C** | Tak |
-|
-| **SPI** | Tak |
-|
-| **Zasilanie** | **Napięcie we/wy** | 3.3V |
-|
-| **Napięcie wejściowe (nominalne)** | 5-18V |
-|
-| **Prąd we/wy na pin** | 12 mA |
-|
-| **Taktowanie zegara** | **Procesor** | 133 MHz |
-|
-| **Pamięć** | **AT25SF128A-MHB-T** | 16MB Flash IC |
-|
-| **Moduł Nina W102 uBlox** | 448 KB ROM, 520KB SRAM, 16MB Flash |
-|
+
+ **Mikrokontroler** | Raspberry Pi RP2040       |               |
+| :---              |    :----:                 |          :--- |
+| **Piny**          | Pin wbudowanej diody      | 13        |
+|                   | Cyfrowe piny              | 20        |
+|                   | Analogowe piny            | 8        |
+|                   | Piny PWM                  | 20 (z wyjątkiem A6 oraz A7)        |    
+| **Łączność**      | Wi-Fi                     | Moduł Nina W102 uBlox        |    
+|                   | Bluetooth                 | Moduł Nina W102 uBlox        |    
+|                   | Moduł zabezpieczeń        | ATECC608A-MAHDA-T Crypto IC       |    
+|  **Sensory**      | IMU                       | LSM6DSOXTR (6 osi)        |    
+|                   | Mikrofon                  | MP34DT05        |  
+| **Komunikacja** | UART | Tak |
+|| I2C | Tak |
+|| SPI | Tak |
+| **Zasilanie** | Napięcie we/wy | 3.3V |
+|| Napięcie wejściowe (nominalne) | 5-18V |
+|| Prąd we/wy na pin | 12 mA |
+| **Taktowanie zegara** | Procesor | 133 MHz |
+| **Pamięć** | AT25SF128A-MHB-T | 16MB Flash IC |
+|| Moduł Nina W102 uBlox | 448 KB ROM, 520KB SRAM, 16MB Flash |
+
 
 _Źródło 3. Opracowanie własne na podstawie [https://docs.arduino.cc/hardware/nano-rp2040-connect](https://docs.arduino.cc/hardware/nano-rp2040-connect)_
 
@@ -136,16 +101,14 @@ _Źródło 3. Opracowanie własne na podstawie [https://docs.arduino.cc/hardware
 
 _Tabela 2. Specyfikacja czujnika DHT-11._
 
-| **Zasilanie** | 3 - 5.5V |
-| --- | --- |
-| **Pomiar temperatury:** | Zakres pomiaru temperatury 0 - 50 °C |
-|
-| Dokładność +/- 2°C |
-| Czas odpowiedzi 6 - 15 s (typowo 10 s) |
+| **Zasilanie**             | 3 - 5.5V                              |
+| :---                      |    :----                             |
+| **Pomiar temperatury:**   | Zakres pomiaru temperatury 0 - 50 °C |
+|| Dokładność +/- 2°C |
+|| Czas odpowiedzi 6 - 15 s (typowo 10 s) |
 | **Pomiar wilgotności** | Zakres pomiaru wilgotności 20% - 90% RH (przy temperaturze 0°C-50°C) |
-|
-| Zakres pomiarowy 6 - 30 s |
-| Dokładność +/- 5% RH |
+| Zakres pomiarowy| 6 - 30 s |
+| Dokładność| +/- 5% RH |
 
 _Źródło 4. Opracowanie własne na podstawie [https://datasheetspdf.com/datasheet/DHT11.html](https://datasheetspdf.com/datasheet/DHT11.html)_
 
@@ -161,10 +124,7 @@ _Źródło 5. Opracowanie własne na podstawie [https://www.kth.se/social/files/
 
     1. Opornik o wartości 1k Ohma i tolerancji 5% (odczytano z kodu paskowego oraz zmierzono miernikiem).
 
-3.2.
 ## **Schemat połączenia podzespołów**
-
-##
 
 _Rysunek 3. Płytka prototypowa wraz z komponentami._
 
@@ -177,7 +137,6 @@ _Rysunek 4. Schemat połączenia._
 
 _Źródło 7. Opracowanie własne w programie Fritzing._
 
-4.
 # **Komunikacja z aplikacją internetową**
 
 Płytka Arduino komunikując się z czujnikami z określonym w kodzie interwałem czasu (25 sekund) pobiera dane dotyczące temperatury, wilgotności powietrza oraz poziomu światła. Następnie przez sieć WIFI zebrane dane wysyłane są metodą POST do interfejsu API aplikacji internetowej. Otrzymane dane zapisywane są w bazie SQLite.
@@ -188,7 +147,6 @@ _Rysunek 5. Schemat komunikacji stacji pogodowej z aplikacją internetową._
 
 _Źródło 8. Opracowanie własne w programie Modelio._
 
-5.
 # **Baza danych**
 
 Dane przechowywane są w bazie danych SQLite.
@@ -212,10 +170,8 @@ _Rysunek 6. Schemat bazy danych._
 
 _Źródło 9. Opracowanie własne w programie PhpStorm.._
 
-6.
 # **Dostęp do pomiarów**
 
-6.1.
 ## **Adresy i ograniczenia**
 
 W utworzonym serwisie dostępne są następujące adresy na które zostały nałożone następujące limity:
@@ -224,7 +180,6 @@ W utworzonym serwisie dostępne są następujące adresy na które zostały nał
 - Dla adresu: [https://iotdane.azurewebsites.net/index.php/logs](https://iotdane.azurewebsites.net/index.php/logs) (czyste dane w formacie JSON) 260 żądań na godzinę;
 - Dla adresu: [https://iotdane.azurewebsites.net/index.php/tabela](https://iotdane.azurewebsites.net/index.php/tabela) (dane w formacie tabelki) 260 żądań na godzinę;
 
-    6.2.
 ## **Pobieranie danych**
 
 Dostęp do danych można uzyskać:
@@ -263,7 +218,6 @@ _Rysunek 10. Widok danych w konsoli._
 
 _Źródło 13. Opracowanie własne._
 
-6.3.
 ## **Wysyłanie danych do aplikacji internetowej**
 
 Pomiary wysyłane są metodą POST wykorzystując autoryzację typu Basic Auth. W przypadku nieprawidłowych danych autoryzacyjnych serwis zwróci komunikat „Brak autoryzacji&quot; lub „Brak nagłówka autoryzującego&quot; ze statusem 401. Status 201 oraz komunikat „dodano&quot; : true oznacza pomyślne dodanie pomiaru do zasobów.
