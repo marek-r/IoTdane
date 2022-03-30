@@ -218,6 +218,8 @@ _Rysunek 10. Widok danych w konsoli._
 
 _Źródło 13. Opracowanie własne._
 
+2. Bądź za pomocą narzędzia np. typu Postman ![](https://projekty.azurewebsites.net/screens/IoTDane/Postman.png)
+
 ## **Wysyłanie danych do aplikacji internetowej**
 
 Pomiary wysyłane są metodą POST wykorzystując autoryzację typu Basic Auth. W przypadku nieprawidłowych danych autoryzacyjnych serwis zwróci komunikat „Brak autoryzacji&quot; lub „Brak nagłówka autoryzującego&quot; ze statusem 401. Status 201 oraz komunikat „dodano&quot; : true oznacza pomyślne dodanie pomiaru do zasobów.
